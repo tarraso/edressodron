@@ -9,11 +9,11 @@ window.onload = function(){
         world.width = 1024; world.height = 768;
         stage.addChild(world);
         player = new Player();
-        world.addChild(player);
         world.setFollowedObject(player);
         level = new Level();
         level.setPlayer(player);
         world.addChild(level);
+        world.addChild(player)
         KeyReader.initialize();
     };
 
