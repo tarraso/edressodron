@@ -63,6 +63,24 @@
                 cur_y += Math.min(Math.max(0,Math.round(-2 + Math.random()*4)),49)
             }
         }
+        for(i=0; i< water_groups; i++){
+            var cur_x = Math.round(Math.random()*50);
+            var cur_y = Math.round(Math.random()*50);
+            function generate_water_tiles(cur_x,cur_y,amount){
+                set_tile(cur_x,cur_y,"water");
+                if((amount>0)&&(cur_x>0)&&(cur_x<49)&&(cur_y>0)&&(cur_y<49)){
+                    generate_water_tiles(cur_x-1,cur_y-1,amount-Math.random()*5);
+                    generate_water_tiles(cur_x-1,cur_y+1,amount-Math.random()*5);
+                    generate_water_tiles(cur_x+1,cur_y-1,amount-Math.random()*5);
+                    generate_water_tiles(cur_x+1,cur_y+1,amount-Math.random()*5);
+                    generate_water_tiles(cur_x-1,cur_y,amount-Math.random()*5);
+                    generate_water_tiles(cur_x+1,cur_y,amount-Math.random()*5);
+                    generate_water_tiles(cur_x,cur_y-1,amount-Math.random()*5);
+                    generate_water_tiles(cur_x,cur_y+1,amount-Math.random()*5);
+                }                    
+            }
+            generate_water_tiles(cur_x, cur_y, Math.random()*5);
+        }
         for(i=0; i<50; i++){
             for(j=0; j<50; j++){
                 if(typeof(tile_array[i][j])!=="undefined"){
