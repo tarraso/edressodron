@@ -9,10 +9,11 @@
     p.initialize = function(){
         p.Container_initialize();
         var shape = new createjs.Shape();
-        shape.graphics.beginFill("red").drawCircle(0,0,10);
+        shape.graphics.beginFill("red").drawCircle(0,0,10).endFill();
+        shape.graphics.beginStroke("black").moveTo(0,0).lineTo(0,-10);
         this.addChild(shape);
         this.reset();
-        //this.on.tick("tick", this.update);
+        this.on("tick", this.update);
     }
 
     p.reset = function(){
@@ -21,14 +22,12 @@
         this.x = 512;
         this.y = 500;
         this.velocity_x = 0;
-        this.velocity_y = -0.001;
+        this.velocity_y = -1;
         angle = - Math.Pi * 0.5;
     };
-    p.Container_update = p.update;
     p.update = function(){
-        p.Container_update()
-        //this.x += velocity_x;
-        //this.y += velocity_y;
+        this.x += this.velocity_x;
+        this.y += this.velocity_y;
     }
     window.Player = Player;
 })();

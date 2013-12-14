@@ -9,6 +9,8 @@
     p.initialize = function(){
         p.Container_initialize();
         var shape = new createjs.Shape();
+        shape.graphics.beginFill("rgba(50,50,50,1)").rect(0, 0, 80, 80);
+        this.addChild(shape)
         this.reset();
         //this.on.tick("tick", this.update);
     }
@@ -18,8 +20,8 @@
         this.y = 0;
     };
     p.Container_update = p.update;
-    p.update = function(){
+    /*p.update = function(){
         p.Container_update()
-    }
+    }*/
     window.Tile = Tile;
 })();

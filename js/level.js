@@ -10,7 +10,7 @@
         p.Container_initialize();
         var shape = new createjs.Shape();
         this.reset();
-        this.on.tick("tick", this.update);
+        this.on("tick", this.update);
     }
 
     p.reset = function(){
@@ -20,9 +20,13 @@
     p.setPlayer = function(player){
         this.player = player;
     }    
-    p.Container_update = p.update;
     p.update = function(){
-        p.Container_update();
+        if(Math.random()*200<1){
+            var tile = new Tile();
+            tile.x = this.player.x;
+            tile.y = this.player.y-2000;
+            this.addChild(tile);
+        }
     }
     window.Level = Level;
 })();
