@@ -6,30 +6,31 @@
     var p = Level.prototype = new createjs.Container();
     p.Container_initialize = p.initialize;
 
-    p.initialize = function(){
+    Level.prototype.initialize = function(){
         p.Container_initialize();
         var shape = new createjs.Shape();
         this.reset();
         this.on("tick", this.update);
     }
 
-    p.reset = function(){
+    Level.prototype.reset = function(){
         this.x = 0;
         this.y = 0;
         this.last_generated_y = 1500;
     };
-    p.setPlayer = function(player){
+    Level.prototype.setPlayer = function(player){
         this.player = player;
     }
-    p.update = function(){
+    Level.prototype.update = function(){
         if(Math.abs(this.last_generated_y - this.player.y)>=2000){
             var t_x = Math.floor(this.player.x/50.0)*50 - 1000;
             var t_y = Math.floor(this.player.y/50.0)*50 - 2000;
             this.generate(t_x,t_y);
             this.last_generated_y = player.y;
         }
+
     }
-    p.generate = function(x_start,y_start){
+    Level.prototype.generate = function(x_start,y_start){
         var tile_array = new Array(50);
         var set_tile = function(x, y, type ){
             if((x>=0)&&(y>=0)&&(x<50)&&(y<50)){
