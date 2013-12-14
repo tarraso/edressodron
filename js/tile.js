@@ -25,16 +25,18 @@
         this.reset();
         this.x = x;
         this.y = y;
-        //this.on.tick("tick", this.update);
+        this.on("tick", this.update);
     }
 
-    p.reset = function(){
+    Tile.prototype.reset = function(){
         this.width = 50;
         this.height = 50;
     };
-    p.Container_update = p.update;
-    /*p.update = function(){
-        p.Container_update()
-    }*/
+    Tile.prototype.update = function(){
+        if(this.y > player.y + 2000){
+            this.parent.removeChild(this);
+            console.log("Remove Tile")
+        }
+    }
     window.Tile = Tile;
 })();
