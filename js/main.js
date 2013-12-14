@@ -14,7 +14,7 @@ window.onload = function(){
         level = new Level();
         level.setPlayer(player);
         world.addChild(level);
-        stage.update();
+        KeyReader.initialize();
     };
 
     function tick(event){

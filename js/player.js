@@ -1,4 +1,7 @@
 (function(){
+
+    var KEY_LEFT = 37;
+    var KEY_RIGHT = 39;
     var Player = function(){
         this.initialize();
     }
@@ -23,11 +26,21 @@
         this.y = 500;
         this.velocity_x = 0;
         this.velocity_y = -1;
-        angle = - Math.Pi * 0.5;
+        this.throttle = 1;
     };
+
     p.update = function(){
         this.x += this.velocity_x;
         this.y += this.velocity_y;
+        if(KeyReader.isKeyPressed(KEY_LEFT)){
+            if(this.rotation>-40) this.rotation-=0.5;
+        }
+        if(KeyReader.isKeyPressed(KEY_RIGHT)){
+            if(this.rotation<=40) this.rotation+=0.5;
+        }
+        this.velocity_x = Math.sin(this.rotation/180*Math.PI)*this.throttle;
+        this.velocity_y = -Math.cos(this.rotation/180*Math.PI)*this.throttle
+
     }
     window.Player = Player;
 })();
