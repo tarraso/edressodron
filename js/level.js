@@ -31,36 +31,42 @@
     }
     p.generate = function(x_start,y_start){
         var tile_array = new Array(50);
+        var set_tile = function(x, y, type ){
+            if((x>=0)&&(y>=0)&&(x<50)&&(y<50)){
+                tile_array[x][y] = type;
+            }
+        }
         var i,j;
         for(i=0; i< 50; i++){
             tile_array[i] = new Array(50);
         }
-        var stone_groups = Math.floor(Math.random()*20);
+        var stone_groups = Math.floor(Math.random()*5);
         var grass_groups = Math.floor(Math.random()*5);
         var water_groups = Math.floor(Math.random()*3);
         for(i=0; i < stone_groups; i++){
-            for(j=0; j< 10; j++){
-                var start_x = Math.round(Math.random()*50);
-                var start_y = Math.round(Math.random()*50);
-                if(!tile_array[i][j]){
-                    break;
-                }
-            }
-            var cur_x = start_x;
-            var cur_y = start_y;
+            var cur_x = Math.min(Math.floor(Math.random()*50), 49);;
+            var cur_y = Math.min(Math.floor(Math.random()*50), 49);;
             var stone_count = Math.floor(Math.random()*50);
             for(j=0; j<stone_count; j++){
-                tile_array[cur_x][cur_y] = "stone";
-                cur_x += Math.min(Math.max(0,Math.round(-1 + Math.random()*2)),49)
-                cur_y += Math.min(Math.max(0,Math.round(-1 + Math.random()*2)),49)
+                set_tile(cur_x,cur_y,"stone");
+                cur_x += Math.min(Math.max(0,Math.round(-1 + Math.random()*2)),49);
+                cur_y += Math.min(Math.max(0,Math.round(-1 + Math.random()*2)),49);
+            }
+        }
+        for(i=0; i< grass_groups; i++){
+            var cur_x = Math.round(Math.random()*50);
+            var cur_y = Math.round(Math.random()*50);
+            var grass_count = Math.floor(Math.random()*200);
+            for(j=0; j<grass_count; j++){
+                set_tile(cur_x,cur_y,"grass");
+                cur_x += Math.min(Math.max(0,Math.round(-2 + Math.random()*4)),49)
+                cur_y += Math.min(Math.max(0,Math.round(-2 + Math.random()*4)),49)
             }
         }
         for(i=0; i<50; i++){
             for(j=0; j<50; j++){
-                if(tile_array[i][j]=="stone"){
-                    var tile = new Tile();
-                    tile.x = x_start + 50*i;
-                    tile.y = y_start - 50*j;
+                if(typeof(tile_array[i][j])!=="undefined"){
+                    var tile = new Tile(x_start + 50*i, y_start - 50*j, tile_array[i][j]);
                     this.addChild(tile);
                 }
             }

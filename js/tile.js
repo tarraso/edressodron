@@ -1,6 +1,6 @@
 (function(){
-    var Tile = function(){
-        this.initialize();
+    var Tile = function(x,y,type){
+        this.initialize(x,y,type);
     }
 
     var p = Tile.prototype = new createjs.Container();
@@ -9,7 +9,7 @@
     p.initialize = function(x,y,type){
         p.Container_initialize();
         var shape = new createjs.Shape();
-        this.type = type | "stone";
+        this.type = type;
         var color;
         if(this.type == "stone"){
             color = "rgba(50,50,50,1)";
@@ -20,15 +20,15 @@
         if(this.type == "grass"){
             color = "rgba(50,255,50,1)";
         }
-        shape.graphics.beginFill("rgba(50,50,50,1)").rect(0, 0, 50, 50);
+        shape.graphics.beginFill(color).rect(0, 0, 50, 50);
         this.addChild(shape)
         this.reset();
+        this.x = x;
+        this.y = y;
         //this.on.tick("tick", this.update);
     }
 
     p.reset = function(){
-        this.x = 0;
-        this.y = 0;
         this.width = 50;
         this.height = 50;
     };
