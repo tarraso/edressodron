@@ -6,9 +6,20 @@
     var p = Tile.prototype = new createjs.Container();
     p.Container_initialize = p.initialize;
 
-    p.initialize = function(x,y){
+    p.initialize = function(x,y,type){
         p.Container_initialize();
         var shape = new createjs.Shape();
+        this.type = type | "stone";
+        var color;
+        if(this.type == "stone"){
+            color = "rgba(50,50,50,1)";
+        }
+        if(this.type == "water"){
+            color = "rgba(50,50,255,1)";
+        }
+        if(this.type == "grass"){
+            color = "rgba(50,255,50,1)";
+        }
         shape.graphics.beginFill("rgba(50,50,50,1)").rect(0, 0, 50, 50);
         this.addChild(shape)
         this.reset();
