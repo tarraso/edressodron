@@ -26,7 +26,7 @@
         this.y = 500;
         this.velocity_x = 0;
         this.velocity_y = -1;
-        this.throttle = 1;
+        this.throttle = 10;
     };
 
     p.update = function(){
