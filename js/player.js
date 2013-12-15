@@ -23,7 +23,8 @@
     Player.prototype.initialize = function(){
         p.Container_initialize();
         var shape = new createjs.Shape();
-        shape.graphics.beginFill("red").drawRect(-25,-50,50,100).endFill();
+        shape.graphics.beginFill("red").drawRect(-25,-50,50,100).endFill().beginFill("yellow").drawRect(-25,-50,15,5).drawRect(10,-50,15,5).endFill();
+        //shape.graphics.beginFill("white").drawRect(25,-50, 50,-48).endFill();
         this.addChild(shape);
         this.reset();
         this.on("tick", this.update);
