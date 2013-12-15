@@ -25,10 +25,13 @@
         this.followed = followed;
     }
     p.update = function(event){
-        if(typeof(this.followed)!="undefined"){
-            this.regX = this.followed.x + OFFSET_X;
-            this.regY = this.followed.y + OFFSET_Y;
-        }
+        var followed = this.followed;
+        var velocity = Math.sqrt(followed.velocity_x*followed.velocity_x+followed.velocity_y*followed.velocity_y);
+        var scale = Math.max(0.3, Math.min(1, 1/velocity));
+        this.scaleX = this.scaleY = scale;
+        this.regX = this.followed.x + OFFSET_X/scale;
+        this.regY = this.followed.y + OFFSET_Y/scale;
     }
+
     window.World = World;
 })();
