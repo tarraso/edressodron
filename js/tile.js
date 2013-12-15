@@ -35,7 +35,6 @@
     Tile.prototype.update = function(){
         if(this.y > player.y + 2000){
             this.parent.removeChild(this);
-            console.log("Remove Tile")
         }
     }
     window.Tile = Tile;
