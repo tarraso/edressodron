@@ -28,7 +28,6 @@
             this.generate(t_x,t_y);
             this.last_generated_y = player.y;
         }
-
     }
     Level.prototype.generate = function(x_start,y_start){
         var tile_array = new Array(50);

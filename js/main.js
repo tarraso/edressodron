@@ -14,6 +14,8 @@ window.onload = function(){
         level.setPlayer(player);
         world.addChild(level);
         world.addChild(player)
+        lava = new Lava();
+        world.addChild(lava);
         KeyReader.initialize();
     };
 
