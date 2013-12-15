@@ -9,8 +9,10 @@
     var ROTATTIONA_A = 0.5;
     var PERPENDICULAR_FRICTION_FACTOR = 1e-2;
     var QUAD_SPEED_FACTOR = 1e-3;
-    var CAR_ACCELERATION = 0.5;
-
+    var CAR_ACCELERATION = 0.4;
+    var STONE_SLOW_DOWN = 0.5;
+    var GRASS_SLOW_DOWN = 0.8;
+    var WATER_SLOW_DOWN = 0.7; 
     var Player = function(){
         this.initialize();
     }
@@ -86,7 +88,15 @@
                 var x = points[j][0];
                 var y = points[j][1]
                 if((x>tile.x)&&(x<(tile.x+tile.width))&&(y>tile.y)&&(y<tile.y+tile.height)){
-                    
+                    if(tile.type=="grass"){
+                        this.velocity_x*=GRASS_SLOW_DOWN;this.velocity_y*=GRASS_SLOW_DOWN;
+                    }
+                     if(tile.type=="stone"){
+                        this.velocity_x*=STONE_SLOW_DOWN;this.velocity_y*=STONE_SLOW_DOWN;
+                    }
+                     if(tile.type=="water"){
+                        this.velocity_x*=WATER_SLOW_DOWN;this.velocity_y*=WATER_SLOW_DOWN;
+                    }
                 }
             }
         }
