@@ -7,12 +7,12 @@
     var MAX_ROTATION_SPEED = 2;
     var ROTATION_FRICTION = 0.9;
     var ROTATTIONA_A = 0.5;
-    var PERPENDICULAR_FRICTION_FACTOR = 1e-2;
+    var PERPENDICULAR_FRICTION_FACTOR = 1e-3;
     var QUAD_SPEED_FACTOR = 1e-3;
-    var CAR_ACCELERATION = 0.4;
-    var STONE_SLOW_DOWN = 0.5;
-    var GRASS_SLOW_DOWN = 0.8;
-    var WATER_SLOW_DOWN = 0.7; 
+    var CAR_ACCELERATION = 0.3;
+    var STONE_SLOW_DOWN = 0.7;
+    var GRASS_SLOW_DOWN = 0.9;
+    var WATER_SLOW_DOWN = 0.8; 
     var Player = function(){
         this.initialize();
     }
