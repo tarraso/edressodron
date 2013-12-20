@@ -22,6 +22,15 @@ window.onload = function(){
     function tick(event){
         stage.update(event);
     };
+
+    function reset_all(event){
+        player.reset();
+        level.reset();
+        lava.reset();
+    }
+
+    window.reset_all = reset_all;
+
     init();
 
 };

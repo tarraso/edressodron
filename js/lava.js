@@ -24,9 +24,7 @@
         this.x= player.x-2500;
 
         if(this.y<player.y){
-            player.reset();
-            level.reset();
-            world.reset();
+            reset_all();
         }
     }
     window.Lava = Lava;

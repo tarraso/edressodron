@@ -16,8 +16,8 @@
     Level.prototype.reset = function(){
         this.x = 0;
         this.y = 0;
-        this.last_generated_y = 1500;
-        this.removeAllChild();
+        this.last_generated_y = 0;
+        this.removeAllChildren();
     };
     Level.prototype.setPlayer = function(player){
         this.player = player;

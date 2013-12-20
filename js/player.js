@@ -36,9 +36,10 @@
         this.x = 512;
         this.y = 500;
         this.velocity_x = 0;
-        this.velocity_y = -1;
+        this.velocity_y = 0;
         this.throttle = 10;
         this.rotation_speed = 0;
+        this.rotation = 0;
     };
 
     Player.prototype.update = function(){
