@@ -17,19 +17,22 @@ window.onload = function(){
         lava = new Lava();
         world.addChild(lava);
         KeyReader.initialize();
+
+        document.getElementById("restart_block").onclick = reset_all;
     };
 
     function tick(event){
-        stage.update(event);
+        if(!createjs.Ticker.getPaused()){
+            stage.update(event);
+        }
     };
 
     function reset_all(event){
         player.reset();
         level.reset();
         lava.reset();
+        createjs.Ticker.setPaused(false);
     }
-
-    window.reset_all = reset_all;
 
     init();
 
