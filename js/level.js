@@ -17,6 +17,7 @@
         this.x = 0;
         this.y = 0;
         this.last_generated_y = 1500;
+        this.removeAllChild();
     };
     Level.prototype.setPlayer = function(player){
         this.player = player;
@@ -66,7 +67,7 @@
         for(i=0; i< water_groups; i++){
             var cur_x = Math.round(Math.random()*50);
             var cur_y = Math.round(Math.random()*50);
-            function generate_water_tiles(cur_x,cur_y,amount){
+            var generate_water_tiles = function(cur_x,cur_y,amount){
                 set_tile(cur_x,cur_y,"water");
                 if((amount>0)&&(cur_x>0)&&(cur_x<49)&&(cur_y>0)&&(cur_y<49)){
                     generate_water_tiles(cur_x-1,cur_y-1,amount-Math.random()*5);
