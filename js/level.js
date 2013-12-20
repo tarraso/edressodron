@@ -41,9 +41,9 @@
         for(i=0; i< 50; i++){
             tile_array[i] = new Array(50);
         }
-        var stone_groups = Math.floor(Math.random()*10);
+        var stone_groups = Math.floor(Math.random()*8);
         var grass_groups = Math.floor(Math.random()*8);
-        var water_groups = Math.floor(Math.random()*6);
+        var water_groups = Math.floor(Math.random()*3);
         for(i=0; i < stone_groups; i++){
             var cur_x = Math.min(Math.floor(Math.random()*50), 49);;
             var cur_y = Math.min(Math.floor(Math.random()*50), 49);;
